@@ -1,6 +1,6 @@
 import {guess} from 'guess-webpack/api';
 
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     prefetch();
 });
 
