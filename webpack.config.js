@@ -7,6 +7,9 @@ module.exports = {
     entry: {
         bundle: ["./index.js"]
     },
+    output: {
+        filename: 'guess-bundle.js'
+    },
     module: {
         rules: [
             {
