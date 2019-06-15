@@ -15,10 +15,13 @@ rm -Rf .git
 ```
 
 ### Setup         
+
+* **インストール**   
 ```console
 npm install
 ```
 
+* **コマンド一覧**    
 ```console
 $ npm run
 Lifecycle scripts included in guess-webpack-starter:
@@ -32,13 +35,29 @@ available via `npm run-script`:
     webpack-cli --mode production
 ```
 
+* **webpack.config.js の VIEW ID の設定**    
+webpack.config.js の GA: '103185238' に取得対象の Googlle Analytics プロパティの VIEW ID を設定します。    
+```console
+    plugins: [
+        new GuessPlugin({ GA: '103185238' }),
+    ]
+```
+
 ### Generate `guess-bundle.js`    
+
+* **プロダクションビルド**   
 ```console
 npm run build:prod
 ```
+これで dist フォルダ 直下 に 圧縮された `guess-bundle.js` が生成されます。          
 
-これで dist フォルダ 直下 に `guess-bundle.js` が生成されます。          
 
+* **ディベロッパービルド**   
+```console
+npm run build:dev
+```
+
+これで dist フォルダ 直下 に 非圧縮の `guess-bundle.js` が生成されます。          
 
 -------------------------------------------------
 ## Google Tag Manager で 読み込み           
@@ -47,6 +66,4 @@ HTMLカスタムタグで、以下のようなタグを作成し、`ページビ
 ```console
 <script type="text/javascript" src="guess-bundle.js"></script>
 ```
-
 これで、DOMContentLoaded のタイミングで次に遷移する確率が高いページを先読みします。            
-

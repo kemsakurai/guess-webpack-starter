@@ -1,5 +1,6 @@
 import {guess} from 'guess-webpack/api';
 
+
 window.addEventListener('DOMContentLoaded', () => {
     prefetch();
 });
