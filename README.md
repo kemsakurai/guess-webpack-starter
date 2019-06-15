@@ -37,10 +37,24 @@ available via `npm run-script`:
 
 * **webpack.config.js の VIEW ID の設定**    
 webpack.config.js の GA: '103185238' に取得対象の Googlle Analytics プロパティの VIEW ID を設定します。    
-```console
-    plugins: [
-        new GuessPlugin({ GA: '103185238' }),
-    ]
+```javascript
+      new GuessPlugin(
+          { GA: '103185238',
+            debug: true,
+            runtime: {
+              basePath: '',
+              // true > PrefetchPlugin 、false > PrefetchAotPlugin の切替を行う
+              delegate: true,
+              // 回線ごとの閾値の指定
+              prefetchConfig: {
+                  '4g': 0.15,
+                  '3g': 0.25,
+                  '2g': 0.45,
+                  'slow-2g': 0.6
+              }
+            }
+          })
+
 ```
 
 ### Generate `guess-bundle.js`    
@@ -61,9 +75,12 @@ npm run build:dev
 
 -------------------------------------------------
 ## Google Tag Manager で 読み込み           
-
 HTMLカスタムタグで、以下のようなタグを作成し、`ページビュー` トリガーでタグを発火させます。      
 ```console
 <script type="text/javascript" src="guess-bundle.js"></script>
 ```
 これで、DOMContentLoaded のタイミングで次に遷移する確率が高いページを先読みします。            
+
+-------------------------------------------------
+## License
+MIT    

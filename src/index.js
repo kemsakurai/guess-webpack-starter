@@ -1,11 +1,10 @@
 import {guess} from 'guess-webpack/api';
 
-
 window.addEventListener('DOMContentLoaded', () => {
-    prefetch();
+    addPrefetchToHead();
 });
 
-function prefetch() {
+function addPrefetchToHead() {
     if (typeof window !== 'undefined') {
         for (const url of Object.keys(guess())) {
             let hint = document.createElement('link');

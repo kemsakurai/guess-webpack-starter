@@ -23,6 +23,21 @@ module.exports = {
         ]
     },
     plugins: [
-        new GuessPlugin({ GA: '103185238' }),
+        new GuessPlugin(
+            { GA: '103185238',
+              debug: true,
+              runtime: {
+                basePath: '',
+                // true > PrefetchPlugin 、false > PrefetchAotPlugin の切替を行う
+                delegate: true,
+                // 回線ごとの閾値の指定
+                prefetchConfig: {
+                    '4g': 0.15,
+                    '3g': 0.25,
+                    '2g': 0.45,
+                    'slow-2g': 0.6
+                }
+              }
+            })
     ]
 }
